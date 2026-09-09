@@ -1,0 +1,99 @@
+/* ==========================================================================
+   个人名片样式表
+   作者：张三
+   说明：简约风格名片 —— 居中卡片、圆形头像、柔和阴影、悬停上浮过渡
+   ========================================================================== */
+
+/* ---------- 1. CSS 变量（统一管理配色，便于修改） ---------- */
+:root {
+  --color-bg:        #f0f4f8;   /* 页面背景色：浅灰蓝 */
+  --color-card:      #ffffff;   /* 卡片背景色：纯白 */
+  --color-text-main: #2c3e50;   /* 主文字颜色：深灰蓝 */
+  --color-text-sub:  #7f8c8d;   /* 次要文字颜色：浅灰 */
+  --color-accent:    #3498db;   /* 强调色：清爽蓝 */
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08);   /* 柔和阴影 */
+  --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.15); /* 悬停时加深的阴影 */
+}
+
+/* ---------- 2. 重置与基础样式 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 让宽高计算包含内边距与边框 */
+}
+
+body {
+  min-height: 100vh;               /* 撑满视口高度 */
+  display: flex;                   /* 使用弹性盒子居中 */
+  align-items: center;             /* 垂直方向居中 */
+  justify-content: center;         /* 水平方向居中 */
+  font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #e0eafc, #f0f4f8); /* 页面背景：柔和渐变 */
+}
+
+/* ---------- 3. 名片卡片主体 ---------- */
+.card {
+  width: 360px;                    /* 卡片宽度 */
+  padding: 40px 30px;              /* 内边距，营造留白 */
+  text-align: center;              /* 卡片内文字居中 */
+  background: var(--color-card);   /* 白色背景 */
+  border-radius: 12px;             /* 需求：12px 圆角 */
+  box-shadow: var(--shadow-soft);  /* 需求：柔和阴影 */
+
+  /* 需求：鼠标悬停时轻微上浮的过渡动画 */
+  transition: transform 0.3s ease,    /* 位移过渡 */
+              box-shadow 0.3s ease;   /* 阴影过渡 */
+}
+
+/* ---------- 4. 悬停效果：轻微上浮 ---------- */
+.card:hover {
+  transform: translateY(-8px);     /* 向上平移 8px，实现“上浮”效果 */
+  box-shadow: var(--shadow-hover); /* 阴影加深，增强立体感 */
+}
+
+/* ---------- 5. 圆形头像 ---------- */
+.avatar {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;             /* 居中并留出下方间距 */
+  overflow: hidden;                /* 防止图片溢出圆形容器 */
+  border-radius: 50%;              /* 圆形裁剪 */
+  border: 3px solid var(--color-accent); /* 强调色描边，突出头像 */
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.avatar img {
+  display: block;
+  width: 100%;                     /* 图片填满容器 */
+  height: 100%;
+  object-fit: cover;               /* 保持比例并裁剪居中，避免变形 */
+}
+
+/* ---------- 6. 姓名 ---------- */
+.name {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--color-text-main);   /* 主文字色 */
+  letter-spacing: 2px;             /* 字间距，更显精致 */
+  margin-bottom: 8px;
+}
+
+/* ---------- 7. 职位 ---------- */
+.title {
+  font-size: 14px;
+  color: var(--color-text-sub);    /* 次要文字色 */
+  margin-bottom: 24px;
+}
+
+/* ---------- 8. 联系方式列表 ---------- */
+.contact {
+  list-style: none;                /* 去掉默认列表符号 */
+  border-top: 1px solid #ecf0f1;   /* 顶部细分隔线，区分信息区块 */
+  padding-top: 20px;
+}
+
+.contact li {
+  font-size: 14px;
+  color: var(--color-text-sub);
+  line-height: 2;                  /* 行高，保持列表疏朗 */
+}

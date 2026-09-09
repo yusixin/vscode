@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 背景：渐变圆形 -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#5aa9f0"/>
+      <stop offset="100%" stop-color="#3498db"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)"/>
+  <!-- 人物头部 -->
+  <circle cx="100" cy="76" r="34" fill="#ffffff" opacity="0.92"/>
+  <!-- 人物肩部 -->
+  <path d="M48 176 C48 136 72 116 100 116 C128 116 152 136 152 176 Z" fill="#ffffff" opacity="0.92"/>
+</svg>
