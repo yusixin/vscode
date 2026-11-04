@@ -1,99 +1,170 @@
-/* ==========================================================================
-   个人名片样式表
-   作者：张三
-   说明：简约风格名片 —— 居中卡片、圆形头像、柔和阴影、悬停上浮过渡
-   ========================================================================== */
-
-/* ---------- 1. CSS 变量（统一管理配色，便于修改） ---------- */
-:root {
-  --color-bg:        #f0f4f8;   /* 页面背景色：浅灰蓝 */
-  --color-card:      #ffffff;   /* 卡片背景色：纯白 */
-  --color-text-main: #2c3e50;   /* 主文字颜色：深灰蓝 */
-  --color-text-sub:  #7f8c8d;   /* 次要文字颜色：浅灰 */
-  --color-accent:    #3498db;   /* 强调色：清爽蓝 */
-  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08);   /* 柔和阴影 */
-  --shadow-hover: 0 16px 40px rgba(0, 0, 0, 0.15); /* 悬停时加深的阴影 */
-}
-
-/* ---------- 2. 重置与基础样式 ---------- */
+/* ================= 全局基础设置 ================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* 让宽高计算包含内边距与边框 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
 body {
-  min-height: 100vh;               /* 撑满视口高度 */
-  display: flex;                   /* 使用弹性盒子居中 */
-  align-items: center;             /* 垂直方向居中 */
-  justify-content: center;         /* 水平方向居中 */
-  font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
-  background: linear-gradient(135deg, #e0eafc, #f0f4f8); /* 页面背景：柔和渐变 */
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    background-color: #fcfcfc;
+    color: #333;
+    line-height: 1.6;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul {
+    list-style: none;
 }
 
-/* ---------- 3. 名片卡片主体 ---------- */
-.card {
-  width: 360px;                    /* 卡片宽度 */
-  padding: 40px 30px;              /* 内边距，营造留白 */
-  text-align: center;              /* 卡片内文字居中 */
-  background: var(--color-card);   /* 白色背景 */
-  border-radius: 12px;             /* 需求：12px 圆角 */
-  box-shadow: var(--shadow-soft);  /* 需求：柔和阴影 */
-
-  /* 需求：鼠标悬停时轻微上浮的过渡动画 */
-  transition: transform 0.3s ease,    /* 位移过渡 */
-              box-shadow 0.3s ease;   /* 阴影过渡 */
+/* ================= 头部导航栏 ================= */
+header {
+    background-color: #fff;
+    border-bottom: 2px solid #d4af37; /* 金色边框 */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-area img {
+    height: 40px;
+}
+.logo-area h1 {
+    font-size: 24px;
+    color: #b8860b; /* 深金色 */
+    letter-spacing: 2px;
+}
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+.nav-links li a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s;
+}
+.nav-links li a:hover, 
+.nav-links li a.active {
+    color: #d4af37; /* 悬停和激活状态为金色 */
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 5px;
 }
 
-/* ---------- 4. 悬停效果：轻微上浮 ---------- */
-.card:hover {
-  transform: translateY(-8px);     /* 向上平移 8px，实现“上浮”效果 */
-  box-shadow: var(--shadow-hover); /* 阴影加深，增强立体感 */
+/* ================= 页脚 ================= */
+footer {
+    background-color: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 3px solid #d4af37;
+}
+footer p {
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
-/* ---------- 5. 圆形头像 ---------- */
-.avatar {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 20px;             /* 居中并留出下方间距 */
-  overflow: hidden;                /* 防止图片溢出圆形容器 */
-  border-radius: 50%;              /* 圆形裁剪 */
-  border: 3px solid var(--color-accent); /* 强调色描边，突出头像 */
-  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+/* ================= 首页特有样式 ================= */
+/* Banner 轮播图区域 */
+.banner {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1543280653-3d1b7f9e769a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+.banner h2 {
+    font-size: 48px;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
-.avatar img {
-  display: block;
-  width: 100%;                     /* 图片填满容器 */
-  height: 100%;
-  object-fit: cover;               /* 保持比例并裁剪居中，避免变形 */
+/* 视频与简介区域 */
+.intro-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+.video-container {
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    background-color: #000;
+}
+.video-container video {
+    width: 100%;
+    display: block;
+}
+.intro-text {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.15); /* 淡淡的金色阴影 */
+    border: 1px solid #f0e6d2;
+    font-size: 16px;
+    color: #444;
+    text-align: left;
+    text-indent: 2em;
+    line-height: 2;
 }
 
-/* ---------- 6. 姓名 ---------- */
-.name {
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--color-text-main);   /* 主文字色 */
-  letter-spacing: 2px;             /* 字间距，更显精致 */
-  margin-bottom: 8px;
+/* ================= 内页通用样式 (美食/景点/文化/攻略) ================= */
+.page-title {
+    text-align: center;
+    margin: 40px 0 20px;
+    color: #b8860b;
+    font-size: 32px;
+}
+.content-container {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
-/* ---------- 7. 职位 ---------- */
-.title {
-  font-size: 14px;
-  color: var(--color-text-sub);    /* 次要文字色 */
-  margin-bottom: 24px;
+/* ================= 攻略页表格特有样式 ================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
 }
-
-/* ---------- 8. 联系方式列表 ---------- */
-.contact {
-  list-style: none;                /* 去掉默认列表符号 */
-  border-top: 1px solid #ecf0f1;   /* 顶部细分隔线，区分信息区块 */
-  padding-top: 20px;
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
 }
-
-.contact li {
-  font-size: 14px;
-  color: var(--color-text-sub);
-  line-height: 2;                  /* 行高，保持列表疏朗 */
+table th {
+    background-color: #d4af37;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+table tr:nth-child(even) {
+    background-color: #faf8f2; /* 斑马线效果，浅金色底 */
+}
+table tr:hover {
+    background-color: #f3ecd8;
 }

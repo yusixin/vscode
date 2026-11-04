@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>蜀韵·成都 - 文化</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 为了保持样式统一，这里直接复用之前的画廊样式 */
+        /* 如果你已经在 style.css 里写了 .food-gallery，可以把这段删掉 */
+        
+        .content-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 针对文化页只有3张图的情况，设置为3列 */
+        .food-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 40px;
+        }
+
+        .food-item {
+            background: #fffaf5;
+            border-radius: 1.2rem;
+            box-shadow: 0 10px 18px -10px rgba(100, 60, 30, 0.12), 0 3px 8px -3px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+            border: 1px solid #ffdfd0;
+            aspect-ratio: 1 / 1; /* 保持正方形 */
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .food-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 28px -14px rgba(160, 70, 30, 0.18), 0 8px 14px -6px rgba(0, 0, 0, 0.06);
+            border-color: #ffb89a;
+        }
+
+        .food-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.3s ease, transform 0.6s ease;
+            filter: saturate(0.98) brightness(1.02);
+            background-color: #f5e4d8;
+        }
+
+        .food-item:hover img {
+            filter: saturate(1.06) brightness(1.03);
+            transform: scale(1.02);
+        }
+
+        /* 响应式：手机端变为2列（如果要保持3个图在手机端看着舒服，也可以不写这个，让它自动缩小） */
+        @media (max-width: 650px) {
+            .food-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            /* 手机端如果有第3张图，让它单独占满两列或者保持单列 */
+            .food-item:last-child {
+                grid-column: span 2;
+                aspect-ratio: 2 / 1; /* 最后一张图变宽 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-area"><h1>蜀韵·成都</h1></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="food.html">美食</a></li>
+                    <li><a href="sights.html">景点</a></li>
+                    <li><a href="culture.html" class="active">文化</a></li>
+                    <li><a href="travel.html">攻略</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <h2 class="page-title">天府文化</h2>
+    
+    <div class="content-container">
+        <p style="text-indent: 2em; font-size: 16px; margin-bottom: 30px;">
+            川剧变脸、蜀锦蜀绣、茶馆文化构成了成都独有的市井风情。在人民公园的鹤鸣茶社喝一杯盖碗茶，看一场精彩的川剧，这才是最地道的成都生活。
+        </p>
+
+        <!-- 在这里添加文化图片网格布局 -->
+        <div class="food-gallery">
+            <div class="food-item">
+                <img src="wen.jpg" alt="成都文化">
+            </div>
+            <div class="food-item">
+                <img src="wen1.jpg" alt="成都文化1">
+            </div>
+            <div class="food-item">
+                <img src="wen2.jpg" alt="成都文化2">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 蜀韵·成都旅游网. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

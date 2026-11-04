@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成都美食 · 自然画廊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fdf8f1;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            color: #2e241f;
+        }
+
+        .content-container {
+            max-width: 1100px;
+            width: 100%;
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            padding: 2.2rem 2rem 2.6rem 2rem;
+            box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.08), 0 6px 18px -6px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0e0d0;
+        }
+
+        .content-container > p {
+            text-indent: 2em;
+            font-size: 16px;
+            line-height: 1.75;
+            margin-bottom: 30px;
+            color: #2e241f;
+            letter-spacing: 0.01em;
+            font-weight: 400;
+            word-break: break-word;
+        }
+
+        /* 响应式网格画廊 */
+        .food-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.4rem;
+            margin-top: 0.6rem;
+        }
+
+        .food-item {
+            background: #fffaf5;
+            border-radius: 1.2rem;
+            box-shadow: 0 10px 18px -10px rgba(100, 60, 30, 0.12), 0 3px 8px -3px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+            border: 1px solid #ffdfd0;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .food-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 28px -14px rgba(160, 70, 30, 0.18), 0 8px 14px -6px rgba(0, 0, 0, 0.06);
+            border-color: #ffb89a;
+        }
+
+        .food-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.3s ease, transform 0.6s ease;
+            filter: saturate(0.98) brightness(1.02);
+            background-color: #f5e4d8;
+            font-size: 0.85rem;
+            color: #7a5a4a;
+            font-style: italic;
+        }
+
+        .food-item:hover img {
+            filter: saturate(1.06) brightness(1.03);
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 950px) {
+            .food-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.2rem;
+            }
+            .content-container {
+                padding: 1.8rem 1.5rem 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 1rem;
+            }
+            .content-container {
+                padding: 1.5rem 1.2rem 1.8rem 1.2rem;
+                border-radius: 1.6rem;
+            }
+            .content-container > p {
+                font-size: 15px;
+                line-height: 1.7;
+                margin-bottom: 1.8rem;
+            }
+            .food-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .food-item {
+                border-radius: 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .food-gallery {
+                gap: 0.8rem;
+            }
+            .food-item {
+                border-radius: 0.9rem;
+            }
+        }
+
+        .food-item img {
+            line-height: 1.4;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <p style="text-indent: 2em; font-size: 16px; margin-bottom: 30px;">
+            成都被誉为“世界美食之都”。火锅、串串香、夫妻肺片、担担面……这里的每一条街道都弥漫着辣椒与花椒的香气。从街边小吃到高档餐厅，成都的美食总能满足你最挑剔的味蕾。
+        </p>
+
+        <div class="food-gallery">
+            <div class="food-item">
+                <img src="food1.jpg" alt="成都美食1">
+            </div>
+            <div class="food-item">
+                <img src="food2.jpg" alt="成都美食2">
+            </div>
+            <div class="food-item">
+                <img src="food3.jpg" alt="成都美食3">
+            </div>
+            <div class="food-item">
+                <img src="food4.jpg" alt="成都美食4">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
